@@ -6,6 +6,7 @@ from django.db import models
 class Ceremony(models.Model):
     title = models.CharField(max_length=100)
     about = models.TextField()
+    title_img = models.ImageField(null=True)
     date = models.DateField(auto_now=True)
 
 
