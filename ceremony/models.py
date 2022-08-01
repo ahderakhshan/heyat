@@ -6,15 +6,15 @@ from django.db import models
 class Ceremony(models.Model):
     title = models.CharField(max_length=100)
     about = models.TextField()
-    title_img = models.ImageField(null=True)
+    title_img = models.ImageField(null=True, upload_to='media/title_images')
     date = models.DateField(auto_now=True)
 
 
 class Picture(models.Model):
-    img = models.ImageField()
+    img = models.ImageField(upload_to='media/ceremony_images')
     ceremony = models.ForeignKey(Ceremony, on_delete=models.CASCADE)
 
 
 class Audio(models.Model):
-    audio = models.FileField()
+    audio = models.FileField(upload_to='media/audios')
     ceremony = models.ForeignKey(Ceremony, on_delete=models.CASCADE)
