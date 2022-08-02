@@ -1,7 +1,11 @@
 from django.shortcuts import render
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
+from rest_framework import status
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView,\
+                                    UpdateAPIView
+from rest_framework.views import APIView
+
 from .serializers import CeremonySerializer, PictureSerializer, AudioSerializer\
-    , ShowCeremonySerializer
+                       , ShowCeremonySerializer, CeremonyUpdateSerializer
 from rest_framework.response import Response
 from .models import Ceremony, Picture, Audio
 from .custom_renders import JPEGRenderer, MP3Renderer
@@ -34,7 +38,10 @@ class Ceremonyimage(RetrieveAPIView):
     renderer_classes = [JPEGRenderer]
 
     def get(self,request, directory ,path):
-        img = Picture.objects.filter(Q(img=f"media/{directory}/{path}")).first().img
+        if directory=='ceremony_images':
+            img = Picture.objects.filter(Q(img=f"media/{directory}/{path}")).first().img
+        elif directory=='title_images':
+            img = Ceremony.objects.filter(Q(title_img=f"media/{directory}/{path}")).first().title_img
         return Response(img, content_type='image/jpg')
 
 
@@ -44,3 +51,15 @@ class CeremonyAudio(RetrieveAPIView):
     def get(self,request, path):
         audio = Audio.objects.filter(Q(audio=f"audios/{path}")).first().audio
         return Response(audio, content_type='audio/mp3')
+
+
+class AddCeremonyTitleImage(APIView):
+    def put(self,request):
+        try:
+            img = request.FILES['image']
+            id = request.data['id']
+            instance = Ceremony.objects.get(id=id)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        instance.title_img = img
+        return Response(status=status.HTTP_200_OK)

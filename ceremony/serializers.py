@@ -8,6 +8,12 @@ class CeremonySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CeremonyUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ceremony
+        fields = ('id', 'title_img')
+
+
 class PictureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Picture
