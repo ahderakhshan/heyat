@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import CreateCeremony, AddCeremonyImage, AddAudioFile, ShowCeremony
+from .views import CreateCeremony, AddCeremonyImage, AddAudioFile,\
+                    Ceremonyimage, ShowCeremony
 
 urlpatterns = [
     path('addceremony/', CreateCeremony.as_view()),

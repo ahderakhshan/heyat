@@ -16,5 +16,5 @@ class Picture(models.Model):
 
 
 class Audio(models.Model):
-    audio = models.FileField(upload_to='media/audios')
+    audio = models.FileField(upload_to='audios')
     ceremony = models.ForeignKey(Ceremony, on_delete=models.CASCADE)
