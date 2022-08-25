@@ -63,3 +63,9 @@ class AddCeremonyTitleImage(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
         instance.title_img = img
         return Response(status=status.HTTP_200_OK)
+
+
+class AllCeremony(ListAPIView):
+    queryset = Ceremony.objects.all()
+    serializer_class = ShowCeremonySerializer
+
