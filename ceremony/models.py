@@ -18,3 +18,8 @@ class Picture(models.Model):
 class Audio(models.Model):
     audio = models.FileField(upload_to='audios')
     ceremony = models.ForeignKey(Ceremony, on_delete=models.CASCADE)
+
+
+class Namahang(models.Model):
+    title = models.CharField(max_length=50)
+    video = models.FileField(upload_to='video')

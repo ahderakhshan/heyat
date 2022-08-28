@@ -5,9 +5,9 @@ from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView,
 from rest_framework.views import APIView
 
 from .serializers import CeremonySerializer, PictureSerializer, AudioSerializer\
-                       , ShowCeremonySerializer, CeremonyUpdateSerializer
+                       , ShowCeremonySerializer, CeremonyUpdateSerializer, NamahangSerializer
 from rest_framework.response import Response
-from .models import Ceremony, Picture, Audio
+from .models import Ceremony, Picture, Audio, Namahang
 from .custom_renders import JPEGRenderer, MP3Renderer
 from PIL import Image
 from django.db.models import Q
@@ -68,4 +68,17 @@ class AddCeremonyTitleImage(APIView):
 class AllCeremony(ListAPIView):
     queryset = Ceremony.objects.all()
     serializer_class = ShowCeremonySerializer
+
+
+class AllNamahang(ListAPIView):
+    queryset = Namahang.objects.all()
+    serializer_class = NamahangSerializer
+
+
+class CreateNamahang(CreateAPIView):
+    serializer_class = NamahangSerializer
+
+
+
+
 

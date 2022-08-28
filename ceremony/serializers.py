@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Ceremony, Picture, Audio
+from .models import Ceremony, Picture, Audio, Namahang
 
 
 class CeremonySerializer(serializers.ModelSerializer):
@@ -39,3 +39,9 @@ class ShowCeremonySerializer(serializers.ModelSerializer):
 
     def get_audios(self, ceremony):
         return ceremony.audio_set.values_list('audio')
+
+
+class NamahangSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Namahang
+        fields = '__all__'

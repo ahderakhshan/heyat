@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import CreateCeremony, AddCeremonyImage, AddAudioFile,\
                     Ceremonyimage, ShowCeremony, AddCeremonyTitleImage,\
-                    AllCeremony
+                    AllCeremony, AllNamahang, CreateNamahang
 
 urlpatterns = [
     path('addceremony/', CreateCeremony.as_view()),
@@ -9,5 +9,7 @@ urlpatterns = [
     path('addaudio/', AddAudioFile.as_view()),
     path('showceremony/', ShowCeremony.as_view()),
     path('addtitleimg/', AddCeremonyTitleImage().as_view()),
-    path('allceremony/', AllCeremony.as_view())
+    path('allceremony/', AllCeremony.as_view()),
+    path('allnamahang/', AllNamahang.as_view()),
+    path('createnamahang/', CreateNamahang.as_view()),
 ]
