@@ -19,3 +19,13 @@ class MP3Renderer(renderers.BaseRenderer):
 
     def render(self, data, media_type=None, renderer_context=None):
         return data
+
+
+class MP4Renderer(renderers.BaseRenderer):
+    media_type = 'audio/mp4'
+    format = 'mp4'
+    charset = None
+    render_style = 'binary'
+
+    def render(self, data, media_type=None, renderer_context=None):
+        return data

@@ -21,5 +21,13 @@ class Audio(models.Model):
 
 
 class Namahang(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     video = models.FileField(upload_to='video')
+
+
+class NextCeremony(models.Model):
+    title = models.CharField(max_length=50)
+    about = models.TextField()
+    image = models.ImageField(upload_to='media/nextceremony')
+    location = models.CharField(max_length=255)
+

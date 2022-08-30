@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Ceremony, Picture, Audio, Namahang
+from .models import Ceremony, Picture, Audio, Namahang, NextCeremony
 
 
 class CeremonySerializer(serializers.ModelSerializer):
@@ -44,4 +44,10 @@ class ShowCeremonySerializer(serializers.ModelSerializer):
 class NamahangSerializer(serializers.ModelSerializer):
     class Meta:
         model = Namahang
+        fields = '__all__'
+
+
+class NextCeremonySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NextCeremony
         fields = '__all__'

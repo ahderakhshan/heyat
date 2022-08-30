@@ -18,7 +18,7 @@ from django.urls import path, include, re_path
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
-from ceremony.views import Ceremonyimage, CeremonyAudio
+from ceremony.views import Ceremonyimage, CeremonyAudio, ShowNamahangVideo
 import ceremony.views
 
 schema_view = get_schema_view(
@@ -36,5 +36,6 @@ urlpatterns = [
     path('ceremony/', include('ceremony.urls')),
     path('media/<str:directory>/<str:path>', Ceremonyimage.as_view()),
     path('audios/<str:path>', CeremonyAudio.as_view() ),
+    path('video/<str:path>', ShowNamahangVideo.as_view()),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
