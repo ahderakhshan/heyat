@@ -9,7 +9,7 @@ from .serializers import CeremonySerializer, PictureSerializer, AudioSerializer\
 from rest_framework.response import Response
 from .models import Ceremony, Picture, Audio, Namahang, NextCeremony
 from .custom_renders import JPEGRenderer, MP3Renderer, MP4Renderer
-from PIL import Image
+
 from django.db.models import Q
 # Create your views here.
 
@@ -137,4 +137,3 @@ class ShowNamahang(ListAPIView):
     def get_queryset(self):
         namahang_id = self.request.query_params['namahang']
         return Namahang.objects.filter(id=namahang_id)
-    
